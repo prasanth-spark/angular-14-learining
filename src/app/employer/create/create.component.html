@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Create New Post</h1>
+  
+    <a href="#" routerLink="/employer/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="title">Name :</label>
+            <input formControlName="name" id="name" type="text" class="form-control">
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']">Title is required.</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="body">Year</label> 
+            <input formControlName="year" id="body" type="text" class="form-control">            
+            <div *ngIf="f['year'].touched && f['year'].invalid" class="alert alert-danger">
+                <div *ngIf="f['year'].errors && f['year'].errors['required']">Year is required.</div>
+                <div *ngIf="f['year'].errors && f['year'].errors['minlength']">Min length is required.</div>
+                <div *ngIf="f['year'].errors && f['year'].errors['maxlength']">max length is required.</div>
+            </div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
